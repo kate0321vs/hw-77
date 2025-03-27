@@ -1,6 +1,6 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import {Note, NoteMutation} from "../types";
-import axiosApi from "../axiosApi.ts";
+import {Note, NoteMutation} from "../../types";
+import axiosApi from "../../axiosApi.ts";
 
 export const fetchNotes = createAsyncThunk<Note[]>(
     'notes/fetchAll',

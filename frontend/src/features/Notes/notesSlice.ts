@@ -1,7 +1,7 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {Note} from "../types";
+import {Note} from "../../types";
 import {createNote, fetchNotes} from "./notesThukn.ts";
-import {RootState} from "../app/store.ts";
+import {RootState} from "../../app/store.ts";
 
 interface NotesState {
     items: Note[];
