@@ -6,6 +6,7 @@ import {selectCreateLoading} from "../../notesSlice.ts";
 import {useAppDispatch, useAppSelector} from "../../../../app/hooks.ts";
 import {createNote, fetchNotes} from "../../notesThukn.ts";
 import SendIcon from '@mui/icons-material/Send';
+import {toast} from "react-toastify";
 
 const initialState = {
     author: '',
@@ -25,6 +26,7 @@ const NoteForm = () => {
             return;
         }
         await dispatch(createNote(state));
+        toast.success('Contact was added Successfully!');
         await dispatch(fetchNotes());
         setState(initialState);
     };
