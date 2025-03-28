@@ -24,7 +24,7 @@ const FileInput: React.FC<Props> = ({ onChange, name, label}) => {
     if(inputRef.current) {
       inputRef.current.click();
     }
-  }
+  };
 
   return (
     <>

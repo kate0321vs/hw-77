@@ -1,5 +1,6 @@
-import { Grid, Card, CardActionArea, CardMedia, CardHeader, CardContent } from "@mui/material";
+import { Card, CardActionArea, CardMedia, CardHeader, CardContent } from "@mui/material";
 import {apiUrl} from "../../../../constants.ts";
+import Grid from '@mui/material/Unstable_Grid2';
 
 interface Props {
     author: string;

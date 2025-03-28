@@ -1,4 +1,5 @@
-import {Button, CircularProgress, Grid, TextField} from "@mui/material";
+import {Button, CircularProgress, TextField} from "@mui/material";
+import Grid from '@mui/material/Unstable_Grid2';
 import FileInput from "../../../../components/UI/FileInput/FileInput.tsx";
 import { NoteMutation } from "../../../../types";
 import {useState} from "react";
@@ -48,6 +49,8 @@ const NoteForm = () => {
         }
     };
 
+
+
     return (
         <>
             <form
@@ -75,7 +78,7 @@ const NoteForm = () => {
                         />
                     </Grid>
                     <Grid item>
-                        <FileInput onChange={filesInputChangeHandler} name='image' label='image' />
+                        <FileInput onChange={filesInputChangeHandler} name='image' label='image'/>
                     </Grid>
                     <Grid item xs={12}>
                         <Button
