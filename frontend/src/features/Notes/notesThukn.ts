@@ -5,7 +5,8 @@ import axiosApi from "../../axiosApi.ts";
 export const fetchNotes = createAsyncThunk<Note[]>(
     'notes/fetchAll',
     async () => {
-        const notesResponse = await axiosApi.get<Note[]>('/notes');
+        const notesResponse = await axiosApi<Note[]>('/notes');
+        console.log(notesResponse.data)
         return notesResponse.data;
     }
 );

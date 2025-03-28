@@ -4,8 +4,7 @@ import { NoteMutation } from "../../../../types";
 import {useState} from "react";
 import {selectCreateLoading} from "../../notesSlice.ts";
 import {useAppDispatch, useAppSelector} from "../../../../app/hooks.ts";
-import {createNote} from "../../notesThukn.ts";
-import {useNavigate} from "react-router-dom";
+import {createNote, fetchNotes} from "../../notesThukn.ts";
 import SendIcon from '@mui/icons-material/Send';
 
 const initialState = {
@@ -18,12 +17,15 @@ const NoteForm = () => {
     const dispatch = useAppDispatch();
     const loading = useAppSelector(selectCreateLoading)
     const [state, setState] = useState<NoteMutation>(initialState);
-    const navigate = useNavigate();
 
     const submitFormHandler = async (e: React.FormEvent) => {
         e.preventDefault();
+        if (state.message.trim().length === 0) {
+            alert("Please enter message");
+            return;
+        }
         await dispatch(createNote(state));
-        navigate('/')
+        await dispatch(fetchNotes());
         setState(initialState);
     };
 
@@ -51,7 +53,7 @@ const NoteForm = () => {
                 onSubmit={submitFormHandler}
             >
                 <Grid container direction="column" spacing={2}>
-                    <Grid item xs>
+                    <Grid item >
                         <TextField
                             id="author" label="Author"
                             value={state.author}
@@ -60,19 +62,20 @@ const NoteForm = () => {
                             fullWidth
                         />
                     </Grid>
-                    <Grid item xs>
+                    <Grid item>
                         <TextField
                             id="message" label="Message"
                             value={state.message}
                             onChange={inputChangeHandler}
                             name="message"
                             fullWidth
+                            required
                         />
                     </Grid>
-                    <Grid item xs>
+                    <Grid item>
                         <FileInput onChange={filesInputChangeHandler} name='image' label='image' />
                     </Grid>
-                    <Grid item xs>
+                    <Grid item xs={12}>
                         <Button
                             endIcon={loading ? <CircularProgress size={24}/> : <SendIcon/>}
                             size="small"

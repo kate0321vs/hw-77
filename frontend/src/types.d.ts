@@ -1,7 +1,7 @@
 export interface Note {
     author: string;
     message: string;
-    image: File | null;
+    image: string | null;
     id: string;
 }
 

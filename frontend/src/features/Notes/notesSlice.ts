@@ -45,5 +45,5 @@ export const notesSlice = createSlice({
 
 export const notesReducer = notesSlice.reducer;
 export const selectNotes = (state: RootState) => state.notes.items;
-export const selectFetchNotes = (state: RootState) => state.notes.fetchLoading;
+export const selectFetchNotesLoading = (state: RootState) => state.notes.fetchLoading;
 export const selectCreateLoading = (state: RootState) => state.notes.createLoading;
